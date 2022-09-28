@@ -1,0 +1,31 @@
+Nginx Webserver
+=================
+FROM ubuntu
+MAINTAINER shobha
+RUN apt-get update -y
+RUN apt-get install -y nginx
+COPY index.html /var/www/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+how to build the image
+================
+
+docker build -t nginxweb .
+
+how to create the container
+====================
+
+docker run --name c3 -p 80:80 -d nginxweb
+
+Connect the webserver
+===================
+docker publicip add:80
+
+push into local docker remote hub.docker.com
+tag/label docker images
+docker login
+docker tag nginxweb z12bsobh/nginxweb
+
+docker push z12bsobh/nginxweb:latest
